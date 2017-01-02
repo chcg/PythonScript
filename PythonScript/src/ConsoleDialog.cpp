@@ -471,8 +471,8 @@ void ConsoleDialog::createOutputWindow(HWND hParentWindow)
 {
     m_scintilla = (HWND)::SendMessage(_hParent, NPPM_CREATESCINTILLAHANDLE, 0, reinterpret_cast<LPARAM>(hParentWindow));
     
-	LONG currentStyle = GetWindowLong(m_scintilla, GWL_STYLE);
-	SetWindowLong(m_scintilla, GWL_STYLE, currentStyle | WS_TABSTOP);
+	LONG currentStyle = GetWindowLongPtr(m_scintilla, GWL_STYLE);
+	SetWindowLongPtr(m_scintilla, GWL_STYLE, currentStyle | WS_TABSTOP);
 
 
 	callScintilla(SCI_SETREADONLY, 1, 0);
