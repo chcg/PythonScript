@@ -113,7 +113,7 @@ public:
 	static charT translate(charT c, bool ignoreCase) {
 		return ignoreCase ? translate_nocase(c) : translate(c);
 	}
-	int toi(const charT*& p1, const charT* p2, int radix) const {
+	boost::intmax_t toi(const charT*& p1, const charT* p2, int radix) const {
 		return boost::BOOST_REGEX_DETAIL_NS::global_toi(p1, p2, radix, *this);
 	}
 	static std::string error_string(boost::regex_constants::error_type n) {
