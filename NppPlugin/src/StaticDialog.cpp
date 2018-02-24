@@ -29,6 +29,7 @@
 #include <stdio.h>
 #include <windows.h>
 #include "StaticDialog.h"
+#include "Common.h"
 
 StaticDialog::~StaticDialog()
 {
@@ -153,10 +154,9 @@ void StaticDialog::create(int dialogID, bool isRTL, bool msgDestParent)
 
 	if (!_hSelf)
 	{
-		DWORD err = ::GetLastError();
-		char errMsg[256];
-		sprintf(errMsg, "CreateDialogParam() return NULL.\rGetLastError() == %u", err);
-		::MessageBoxA(NULL, errMsg, "In StaticDialog::create()", MB_OK);
+		generic_string errMsg = TEXT("CreateDialogParam() return NULL.\rGetLastError(): ");
+		errMsg += GetLastErrorAsString();
+		::MessageBox(NULL, errMsg.c_str(), TEXT("In StaticDialog::create()"), MB_OK);
 		return;
 	}
 
