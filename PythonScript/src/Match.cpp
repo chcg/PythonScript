@@ -129,7 +129,7 @@ boost::python::tuple Match::py_groups()
 {
 	size_t size = groupCount();
     PyObject* groupsTuple = PyTuple_New(size - 1);
-    for(int index = 1; index != size; ++index)
+    for(int index = 1; index != static_cast<int>(size); ++index)
 	{
         boost::python::str groupContent = py_group_number(index);
         // PyTuple_SetItem steals a reference, but because it's a boost::python::object, it'll be Py_DECREF'd by the next iteration
@@ -148,7 +148,7 @@ boost::python::object py_group_variable(boost::python::tuple args, boost::python
 
 boost::python::object Match::py_group_variable(boost::python::tuple args, boost::python::dict kwargs)
 {
-    size_t size = boost::python::len(args); 
+    ssize_t size = boost::python::len(args);
 
     // For the default case, no arguments, return the whole match
     if (size == 0)
