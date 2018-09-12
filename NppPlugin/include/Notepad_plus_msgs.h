@@ -414,6 +414,11 @@ enum Platform { PF_UNKNOWN, PF_X86, PF_X64, PF_IA64 };
 	#define NPPM_DISABLEAUTOUPDATE (NPPMSG + 95) // 2119 in decimal
 	// VOID NPPM_DISABLEAUTOUPDATE(0, 0)
 
+    #define NPPM_CLEARSHORTCUTBYCMDID (NPPMSG + 96)
+	// BOOL NPPM_CLEARSHORTCUTBYCMDID(int cmdID)
+	// clear your plugin command current mapped shortcut via cmdID
+	// returned value : TRUE if this function call is successful and shortcut is enable, otherwise FALSE
+
 #define	RUNCOMMAND_USER    (WM_USER + 3000)
 	#define NPPM_GETFULLCURRENTPATH		(RUNCOMMAND_USER + FULL_CURRENT_PATH)
 	#define NPPM_GETCURRENTDIRECTORY	(RUNCOMMAND_USER + CURRENT_DIRECTORY)
