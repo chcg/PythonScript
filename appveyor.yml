@@ -9,11 +9,11 @@ environment:
 
 platform:
     - x64
-    - Win32
+    #- Win32
 
 configuration:
     - Release
-    - Debug
+    #- Debug
     # see http://www.boost.org/doc/libs/1_66_0/libs/python/doc/html/building/python_debugging_builds.html
     # not available by boost nuget package
     #- PythonDebug
@@ -45,7 +45,7 @@ after_build:
     - if "%configuration%"=="Release" cd "%APPVEYOR_BUILD_FOLDER%"\docs
     - if "%configuration%"=="Release" python -m pip install --upgrade pip
     - if "%configuration%"=="Release" pip install -U sphinx
-    - if "%configuration%"=="Release" make.bat singlehtml
+    - if "%configuration%"=="Release" make.bat html
 
     - cd "%APPVEYOR_BUILD_FOLDER%"\installer
     - set WIX_PATH="C:\Program Files (x86)\WiX Toolset v3.11\bin"
@@ -59,6 +59,8 @@ after_build:
 
         if ($env:PLATFORM_INPUT -eq "x64") {
             Push-AppveyorArtifact "$env:PLATFORM_INPUT\$env:CONFIGURATION\PythonScript.dll" -FileName PythonScript.dll
+            Push-AppveyorArtifact "installer\build\1.2.0.0\PythonScript_1.2.0.0_x64.msi" -FileName PythonScript_1.2.0.0_x64.msi
+
         }
 
         if ($env:PLATFORM_INPUT -eq "Win32" ) {
