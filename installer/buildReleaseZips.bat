@@ -103,7 +103,7 @@ mkdir %INSTALLERDIR%\build\%PYTHONSCRIPTVERSION%
 cd %INST_TEMP_DIR%\release\Full\plugins\PythonScript
 %SEVENZIPEXE% a -r -tzip %INSTALLERDIR%\build\%PYTHONSCRIPTVERSION%\PythonScript_Full_%PYTHONSCRIPTVERSION%%NAME_ADDON%_PluginAdmin.zip .
 
-cd %INST_TEMP_DIR%\release\Full
+cd %INSTALLERDIR%\%INST_TEMP_DIR%\release\Full
 %SEVENZIPEXE% a -r -t7z %INSTALLERDIR%\build\%PYTHONSCRIPTVERSION%\PythonScript_Full_%PYTHONSCRIPTVERSION%%NAME_ADDON%.7z .
 %SEVENZIPEXE% a -r -tzip %INSTALLERDIR%\build\%PYTHONSCRIPTVERSION%\PythonScript_Full_%PYTHONSCRIPTVERSION%%NAME_ADDON%.zip .
 
@@ -124,8 +124,8 @@ echo Here are the local server links if you can't get to ^<a href="http://source
 echo Please use the sourceforge link if you can - I have limited bandwidth limits. >> %INSTALLERDIR%\..\www\localdl.shtml
 echo ^<br/^>^<br/^>^<br/^>  >> %INSTALLERDIR%\..\www\localdl.shtml
 
-%PYTHONBUILDDIR%\python %INSTALLERDIR%\humanReadableSize.py %INSTALLERDIR%\build\%PYTHONSCRIPTVERSION%\PythonScript_%PYTHONSCRIPTVERSION%%NAME_ADDON%.msi > %INSTALLERDIR%\%INST_TEMP_DIR%\size.txt
-SET /p PYTHONSCRIPT_FILESIZE= < %INSTALLERDIR%\%INST_TEMP_DIR%\size.txt
+
+SET /p PYTHONSCRIPT_FILESIZE= 0
 
 echo ^<br/^>^<a href="http://www.brotherstone.co.uk/npp/ps/downloads/%PYTHONSCRIPTVERSION%/PythonScript_%PYTHONSCRIPTVERSION%%NAME_ADDON%.msi"^>Python Script %PYTHONSCRIPTVERSION% Installer (includes all extra files) (%PYTHONSCRIPT_FILESIZE%)^</a^>  >> %INSTALLERDIR%\..\www\localdl.shtml
 

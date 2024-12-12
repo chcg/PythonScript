@@ -50,7 +50,7 @@ if NOT [%ERRORLEVEL%]==[0] (
 )
 
 echo Compiling python lib WiX source
-candle %INST_TEMP_DIR%\fullLib.wxs -o %INST_TEMP_DIR%\fullLib.wixobj -dpylibSource=..\pythonlib\full -arch %MSI_ARCH%
+wix build %INST_TEMP_DIR%\fullLib.wxs -o %INST_TEMP_DIR%\fullLib.wixobj -d pylibSource=..\pythonlib\full -arch %MSI_ARCH%
 if NOT [%ERRORLEVEL%]==[0] (
  goto error
 )
@@ -62,7 +62,7 @@ if NOT [%ERRORLEVEL%]==[0] (
 )
 
 echo Compiling python pyd lib WiX source
-candle %INST_TEMP_DIR%\fullLib_dll%NAME_ADDON%.wxs -o %INST_TEMP_DIR%\fullLib_dll%NAME_ADDON%.wixobj -dpylibSource=..\pythonlib\full_dll%NAME_ADDON% -arch %MSI_ARCH%
+wix build %INST_TEMP_DIR%\fullLib_dll%NAME_ADDON%.wxs -o %INST_TEMP_DIR%\fullLib_dll%NAME_ADDON%.wixobj -d pylibSource=..\pythonlib\full_dll%NAME_ADDON% -arch %MSI_ARCH%
 if NOT [%ERRORLEVEL%]==[0] (
  goto error
 )
@@ -74,7 +74,7 @@ if NOT [%ERRORLEVEL%]==[0] (
 )
 
 echo Compiling tcl lib WiX source
-candle %INST_TEMP_DIR%\tcl.wxs -o %INST_TEMP_DIR%\tcl.wixobj -dpylibSource=..\pythonlib\tcl -arch %MSI_ARCH%
+wix build %INST_TEMP_DIR%\tcl.wxs -o %INST_TEMP_DIR%\tcl.wixobj -d pylibSource=..\pythonlib\tcl -arch %MSI_ARCH%
 if NOT [%ERRORLEVEL%]==[0] (
  goto error
 )
@@ -86,7 +86,7 @@ if NOT [%ERRORLEVEL%]==[0] (
 )
 
 echo Compiling tcl lib WiX source
-candle %INST_TEMP_DIR%\tcl_dll%NAME_ADDON%.wxs -o %INST_TEMP_DIR%\tcl_dll%NAME_ADDON%.wixobj -dpylibSource=..\pythonlib\tcl_dll%NAME_ADDON% -arch %MSI_ARCH%
+wix build %INST_TEMP_DIR%\tcl_dll%NAME_ADDON%.wxs -o %INST_TEMP_DIR%\tcl_dll%NAME_ADDON%.wixobj -d pylibSource=..\pythonlib\tcl_dll%NAME_ADDON% -arch %MSI_ARCH%
 if NOT [%ERRORLEVEL%]==[0] (
  goto error
 )
@@ -98,7 +98,7 @@ if NOT [%ERRORLEVEL%]==[0] (
 )
 
 echo Compiling Sample Scripts WiX source
-candle %INST_TEMP_DIR%\sampleScripts.wxs -o %INST_TEMP_DIR%\sampleScripts.wixobj -dscriptSource=..\scripts\Samples -arch %MSI_ARCH%
+wix build %INST_TEMP_DIR%\sampleScripts.wxs -o %INST_TEMP_DIR%\sampleScripts.wixobj -d scriptSource=..\scripts\Samples -arch %MSI_ARCH%
 if NOT [%ERRORLEVEL%]==[0] (
  goto error
 )
@@ -111,7 +111,7 @@ if NOT [%ERRORLEVEL%]==[0] (
 )
 
 echo Compiling Unit test WiX source
-candle %INST_TEMP_DIR%\unittests.wxs -o %INST_TEMP_DIR%\unittests.wixobj -dunittestSource=..\PythonScript\python_tests -arch %MSI_ARCH%
+wix build %INST_TEMP_DIR%\unittests.wxs -o %INST_TEMP_DIR%\unittests.wixobj -d unittestSource=..\PythonScript\python_tests -arch %MSI_ARCH%
 if NOT [%ERRORLEVEL%]==[0] (
  goto error
 )
@@ -123,13 +123,13 @@ if NOT [%ERRORLEVEL%]==[0] (
 )
 
 echo Compiling Html doc WiX source
-candle %INST_TEMP_DIR%\htmldoc.wxs -o %INST_TEMP_DIR%\htmldoc.wixobj -dhtmldocsSource=..\docs\build\html -arch %MSI_ARCH%
+wix build %INST_TEMP_DIR%\htmldoc.wxs -o %INST_TEMP_DIR%\htmldoc.wixobj -d htmldocsSource=..\docs\build\html -arch %MSI_ARCH%
 if NOT [%ERRORLEVEL%]==[0] (
  goto error
 )
 
 echo Compiling main PythonScript installer
-candle pythonscript.wxs -o %INST_TEMP_DIR%\pythonscript.wixobj -dversion=%PYTHONSCRIPTVERSION% -dbaseDir=.. -dpythonDir=%PYTHONBUILDDIR% -dvariantDir=%PYTHONSCRIPTDLLDIR% -dPlatform=%MSI_ARCH% -arch %MSI_ARCH%
+wix build pythonscript.wxs -o %INST_TEMP_DIR%\pythonscript.wixobj -d version=%PYTHONSCRIPTVERSION% -d baseDir=.. -dpythonDir=%PYTHONBUILDDIR% -d variantDir=%PYTHONSCRIPTDLLDIR% -d Platform=%MSI_ARCH% -arch %MSI_ARCH%
 if NOT [%ERRORLEVEL%]==[0] (
  goto error
 )
@@ -141,7 +141,7 @@ IF NOT EXIST "build\%PYTHONSCRIPTVERSION%" (
 )
 
 
-light %INST_TEMP_DIR%\pythonscript.wixobj %INST_TEMP_DIR%\fullLib.wixobj %INST_TEMP_DIR%\fullLib_dll%NAME_ADDON%.wixobj %INST_TEMP_DIR%\unittests.wixobj %INST_TEMP_DIR%\tcl.wixobj %INST_TEMP_DIR%\tcl_dll%NAME_ADDON%.wixobj %INST_TEMP_DIR%\sampleScripts.wixobj %INST_TEMP_DIR%\htmldoc.wixobj -o build\%PYTHONSCRIPTVERSION%\PythonScript_%PYTHONSCRIPTVERSION%%NAME_ADDON%.msi -ext WixUIExtension
+wix build %INST_TEMP_DIR%\pythonscript.wixobj %INST_TEMP_DIR%\fullLib.wixobj %INST_TEMP_DIR%\fullLib_dll%NAME_ADDON%.wixobj %INST_TEMP_DIR%\unittests.wixobj %INST_TEMP_DIR%\tcl.wixobj %INST_TEMP_DIR%\tcl_dll%NAME_ADDON%.wixobj %INST_TEMP_DIR%\sampleScripts.wixobj %INST_TEMP_DIR%\htmldoc.wixobj -o build\%PYTHONSCRIPTVERSION%\PythonScript_%PYTHONSCRIPTVERSION%%NAME_ADDON%.msi extension add WixUIExtension
 if NOT [%ERRORLEVEL%]==[0] (
  goto error
 )
