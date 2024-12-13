@@ -4,9 +4,11 @@
 	<?if $(var.Platform) = x64 ?>
 		<?define ProductName = "PythonScript plugin for Notepad++ (64 bit)" ?>
 		<?define Win64 = "always64" ?>
+		<?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
 	<?else?>
 		<?define ProductName = "PythonScript plugin for Notepad++" ?>
 		<?define Win64 = "always32" ?>
+		<?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
 	<?endif?>
 
 	<Package Language="1033" Manufacturer="Dave Brotherstone" Name="$(var.ProductName)" UpgradeCode="717FEC91-6F2B-459D-9868-0A3A037F5195" Version="$(var.version)" InstallerVersion="200"><Upgrade Id="717FEC91-6F2B-459D-9868-0A3A037F5195">  
@@ -51,7 +53,7 @@
 		<ui:WixUI Id="WixUI_FeatureTree" />
 		
 	
-			<Directory Id="$(var.ProgramFiles6432Folder)">
+			<Directory Id="$(var.PlatformProgramFilesFolder)">
 				<Directory Id="INSTALLDIR" Name="Notepad++">
 					<Directory Id="D_Plugins" Name="plugins">
 						<Directory Id="D_PythonScript" Name="PythonScript">
