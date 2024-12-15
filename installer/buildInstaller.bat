@@ -145,7 +145,7 @@ wix extension add WixToolset.UI.wixext
 wix extension list
 cd ..\installer
 
-wix build %INST_TEMP_DIR%\pythonscript.wixlib %INST_TEMP_DIR%\fullLib.wixlib %INST_TEMP_DIR%\fullLib_dll%NAME_ADDON%.wixlib %INST_TEMP_DIR%\unittests.wixlib %INST_TEMP_DIR%\tcl.wixlib %INST_TEMP_DIR%\tcl_dll%NAME_ADDON%.wixlib %INST_TEMP_DIR%\sampleScripts.wixlib %INST_TEMP_DIR%\htmldoc.wixlib -o build\%PYTHONSCRIPTVERSION%\PythonScript_%PYTHONSCRIPTVERSION%%NAME_ADDON%.msi -ext WixToolset.UI.wixext
+wix build %INST_TEMP_DIR%\pythonscript.wixlib %INST_TEMP_DIR%\fullLib.wixlib %INST_TEMP_DIR%\fullLib_dll%NAME_ADDON%.wixlib %INST_TEMP_DIR%\unittests.wixlib %INST_TEMP_DIR%\tcl.wixlib %INST_TEMP_DIR%\tcl_dll%NAME_ADDON%.wixlib %INST_TEMP_DIR%\sampleScripts.wixlib %INST_TEMP_DIR%\htmldoc.wixlib -o build\%PYTHONSCRIPTVERSION%\PythonScript_%PYTHONSCRIPTVERSION%%NAME_ADDON%.msi
 if NOT [%ERRORLEVEL%]==[0] (
  goto error
 )
