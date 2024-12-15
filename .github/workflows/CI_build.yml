@@ -50,8 +50,4 @@ jobs:
            $env:WIX_HEAT_PATH="${{ github.workspace }}\packages\wixtoolset.heat.5.0.2\tools\net472\x64"
            $env:WIX_PACKAGES_PATH="${{ github.workspace }}\packages"
            $env:PATH = $env:WIX_HEAT_PATH + ';' + $env:WIX_PACKAGES_PATH + ';' + $env:PATH
-           cd ..\packages
-           wix extension add WixToolset.UI.wixext
-           wix extension list
-           cd ..\installer
            .\buildAll.bat ${{ matrix.build_platform }}

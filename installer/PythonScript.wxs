@@ -1,5 +1,5 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
-	
+
 
 	<?if $(var.Platform) = x64 ?>
 		<?define ProductName = "PythonScript plugin for Notepad++ (64 bit)" ?>
@@ -11,18 +11,17 @@
 		<?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
 	<?endif?>
 
-	<Package Language="1033" Manufacturer="Dave Brotherstone" Name="$(var.ProductName)" UpgradeCode="717FEC91-6F2B-459D-9868-0A3A037F5195" Version="$(var.version)" InstallerVersion="200"><Upgrade Id="717FEC91-6F2B-459D-9868-0A3A037F5195">  
+	<Package Language="1033" Manufacturer="Dave Brotherstone" Name="$(var.ProductName)" UpgradeCode="717FEC91-6F2B-459D-9868-0A3A037F5195" Version="$(var.version)" InstallerVersion="200"><Upgrade Id="717FEC91-6F2B-459D-9868-0A3A037F5195">
 		   <UpgradeVersion Minimum="0.0.0.0" Maximum="$(var.version)" Property="PREVIOUSVERSIONSINSTALLED" IncludeMinimum="yes" IncludeMaximum="no" />
 		</Upgrade>
 
-		<Media Id="1" Cabinet="PythonScript.cab" EmbedCab="yes" />  
-		
+		<Media Id="1" Cabinet="PythonScript.cab" EmbedCab="yes" />
+
 		<InstallExecuteSequence>
-				<RemoveExistingProducts Before="InstallInitialize" /> 
+				<RemoveExistingProducts Before="InstallInitialize" />
 		</InstallExecuteSequence>
 
 		<Property Id="INSTALLLEVEL" Value="5" />
-		
 
 		<Feature Id="FT_PythonScriptAll" Title="PythonScript Components" Display="expand" AllowAdvertise="no" ConfigurableDirectory="INSTALLDIR" Description="Install directory should be the install directory of your Notepad++ directory">
 			<Feature Id="FT_PythonScript" Title="PythonScript plugin" AllowAdvertise="no">
@@ -46,13 +45,12 @@
 				<ComponentGroupRef Id="CG_UnitTests" />
 			</Feature>
 		</Feature>
-			
+
 		<WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
 		<WixVariable Id="WixUIBannerBmp" Value="images\banner.bmp" />
 		<WixVariable Id="WixUIDialogBmp" Value="images\dialog.bmp" />
-		<ui:WixUI Id="WixUI_FeatureTree" />
-		
-	
+
+
 			<Directory Id="$(var.PlatformProgramFilesFolder)">
 				<Directory Id="INSTALLDIR" Name="Notepad++">
 					<Directory Id="D_Plugins" Name="plugins">
