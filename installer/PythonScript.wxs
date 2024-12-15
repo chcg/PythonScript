@@ -49,7 +49,7 @@
 		<WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
 		<WixVariable Id="WixUIBannerBmp" Value="images\banner.bmp" />
 		<WixVariable Id="WixUIDialogBmp" Value="images\dialog.bmp" />
-
+		<ui:WixUI Id="WixUI_FeatureTree" />
 
 			<Directory Id="$(var.PlatformProgramFilesFolder)">
 				<Directory Id="INSTALLDIR" Name="Notepad++">
