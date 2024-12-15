@@ -50,4 +50,8 @@ jobs:
            $env:WIX_HEAT_PATH="${{ github.workspace }}\packages\wixtoolset.heat.5.0.2\tools\net472\x64"
            $env:WIX_PACKAGES_PATH="${{ github.workspace }}\packages"
            $env:PATH = $env:WIX_HEAT_PATH + ';' + $env:WIX_PACKAGES_PATH + ';' + $env:PATH
+           dotnet new console
+           dotnet add package WixToolset.UI.wixext --version 5.0.2
+           md "%userprofile%\.wix\extensions\wixtoolset.ui.wixext\5.0.2"
+           xcopy "%userprofile%\.nuget\packages\wixtoolset.ui.wixext\5.0.2\wixext5" "%userprofile%\.wix\extensions\wixtoolset.ui.wixext\5.0.2\wixext5\" /S
            .\buildAll.bat ${{ matrix.build_platform }}
